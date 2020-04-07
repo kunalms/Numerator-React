@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import axios from "axios";
 
 import { CardContent } from '../components';
+import {NavLink} from "react-router-dom";
 
 class GameList extends Component {
   constructor(props) {
@@ -22,9 +23,12 @@ class GameList extends Component {
         <ul className="list">
           {this.state.games.map((game, index) => (
               <li key={game.Rank} role="presentation">
-                <div className="card">
-                  <CardContent name={game.Name} description={game.Platform} />
-                </div>
+                <NavLink to={`games/${game.Rank}`}>
+                  <div  className="card">
+
+                    <CardContent name={game.Name} description={game.Platform} />
+                  </div>
+                </NavLink>
               </li>
           ))}
         </ul>

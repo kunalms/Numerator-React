@@ -5,7 +5,7 @@ import { ListHeader } from "../components";
 import GameDetail from "./GameDetail";
 import GameList from "./GameList";
 
-function Games({ history }) {
+function Games() {
   return (
     <div className="content-container">
       <ListHeader title="Games" routePath="/games" />

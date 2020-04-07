@@ -2,22 +2,33 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import axios from "axios";
 
+import { CardContent } from '../components';
+
 class GameList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {games:[]};
   }
 
   componentDidMount() {
     axios.get(`http://starlord.hackerearth.com/TopSellingGames`).then(res => {
-      console.log(res);
       const games = res.data;
-      this.setState({ games });
+      this.setState({ games: games });
     });
   }
 
   render() {
-    return <div>it works</div>;
+    return (
+        <ul className="list">
+          {this.state.games.map((game, index) => (
+              <li key={game.Rank} role="presentation">
+                <div className="card">
+                  <CardContent name={game.Name} description={game.Platform} />
+                </div>
+              </li>
+          ))}
+        </ul>
+    );
   }
 }
 
